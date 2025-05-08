@@ -1,4 +1,5 @@
-from flask import Flask
+from flask import Flask, render_template
+from json_data import load_posts
 
 app = Flask(__name__)
 
