@@ -30,3 +30,21 @@ def update_post(post_id: int, author: str, title: str, content: str):
             post.update({'author': author, 'title': title, 'content': content})
             break
     save_posts(posts)
+
+
+def fetch_post_by_id(post_id):
+    posts = load_posts()
+    for post in posts:
+        if post['id'] == post_id:
+            return post
+    return None
+
+def update_post(post_id, author, title, content):
+    posts = load_posts()
+    for post in posts:
+        if post['id'] == post_id:
+            post['author'] = author
+            post['title'] = title
+            post['content'] = content
+            break
+    save_posts(posts)
