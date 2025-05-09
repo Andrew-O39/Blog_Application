@@ -12,9 +12,9 @@ def index():
 @app.route('/add', methods=['GET', 'POST'])
 def add():
     if request.method == 'POST':
-        author = request.form['author']
-        title = request.form['title']
-        content = request.form['content']
+        author = request.form.get('author')
+        title = request.form.get('title')
+        content = request.form.get('content')
         add_post(author, title, content)
         return redirect(url_for('index'))
     return render_template('add.html')
