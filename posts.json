@@ -9,12 +9,18 @@
         "id": 2,
         "author": "Jane Doe",
         "title": "Second Post",
-        "content": "This is another post"
+        "content": "This is my second post"
     },
     {
         "id": 3,
         "author": "Andrew",
         "title": "Test Post",
         "content": "This is a test post"
+    },
+    {
+        "id": 4,
+        "author": "Andrew",
+        "title": "What I just created",
+        "content": "It is impressive what I have created in the past two days!"
     }
 ]
