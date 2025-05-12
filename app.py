@@ -19,6 +19,11 @@ def add():
         title = request.form.get('title')
         content = request.form.get('content')
 
+        # Add validation for form data to check if all fields are filled
+        if not author or not title or not content:
+            error = "All fields are required."
+            return render_template('add.html', error=error, author=author, title=title, content=content)
+
         # Call a helper function to create and save the new post
         add_post(author, title, content)
         return redirect(url_for('index'))

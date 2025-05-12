@@ -8,15 +8,21 @@
 </head>
 <body>
     <h1>Add a New Blog Post</h1>
-    <form method="POST">
+
+    <!-- Show validation error if any -->
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+    <form action="{{ url_for('add') }}" method="POST">
         <label for="author">Author:</label><br>
-        <input type="text" id="author" name="author" required><br><br>
+        <input type="text" id="author" name="author" value="{{ author or '' }}"><br><br>
 
         <label for="title">Title:</label><br>
-        <input type="text" id="title" name="title" required><br><br>
+        <input type="text" id="title" name="title" value="{{ title or '' }}"><br><br>
 
         <label for="content">Content:</label><br>
-        <textarea id="content" name="content" rows="5" required></textarea><br><br>
+        <textarea id="content" name="content" rows="5" cols="30">{{ content or '' }}</textarea><br><br>
 
         <input type="submit" value="Add Post">
     </form>
