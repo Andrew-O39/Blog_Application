@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
-from json_data import load_posts, add_post,delete_post, fetch_post_by_id, update_post
+from json_data import load_posts, add_post, delete_post, fetch_post_by_id, update_post
 
 app = Flask(__name__)
 
@@ -9,6 +9,7 @@ def index():
     """Display all blog posts on the homepage."""
     blog_posts = load_posts()
     return render_template('index.html', posts=blog_posts)
+
 
 @app.route('/add', methods=['GET', 'POST'])
 def add():
