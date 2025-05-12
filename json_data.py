@@ -34,11 +34,10 @@ def delete_post(post_id: int):
 def update_post(post_id: int, author: str, title: str, content: str):
     """Update an existing post with new data."""
     posts = load_posts()
-    for post in posts:
-        if post['id'] == post_id:
-            post.update({'author': author, 'title': title, 'content': content})
-            break
-    save_posts(posts)
+    post = next((p for p in posts if p['id'] == post_id), None)
+    if post:
+        post.update({'author': author, 'title': title, 'content': content})
+        save_posts(posts)
 
 
 def fetch_post_by_id(post_id):
