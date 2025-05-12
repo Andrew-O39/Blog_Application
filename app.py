@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
-from json_data import load_posts, add_post, save_posts, fetch_post_by_id, update_post
+from json_data import load_posts, add_post,delete_post, fetch_post_by_id, update_post
 
 app = Flask(__name__)
 
@@ -27,12 +27,10 @@ def add():
     return render_template('add.html')
 
 
-@app.route('/delete/<int:post_id>')
+@app.route('/delete/<int:post_id>', methods=['POST'])
 def delete(post_id):
-    """Delete a blog post by its ID and redirect to the homepage."""
-    posts = load_posts()
-    updated_posts = [post for post in posts if post['id'] != post_id]
-    save_posts(updated_posts)
+    """Securely delete a blog post via POST request."""
+    delete_post(post_id)
     return redirect(url_for('index'))
 
 
